@@ -141,6 +141,26 @@
       margin: 0 auto;
     }
 
+    /* Estilo do modal de vídeo */
+    #videoModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #videoModal iframe {
+      width: 80%;
+      height: 80%;
+      border: none;
+    }
+
     @media (max-width: 600px) {
       nav {
         padding: 1rem 1.5rem;
@@ -165,7 +185,7 @@
 
   <nav>
     <a href="#saude-geral">Saúde Geral</a>
-    <a href="#planejamento-familiar">Planejamento Familiar</a>
+    <a href="#planejamento-familiar" id="planFamiliarLink">Planejamento Familiar</a>
     <a href="#contato">Contato</a>
   </nav>
 
@@ -189,7 +209,7 @@
     <img src="https://via.placeholder.com/600x350?text=Planejamento+Familiar" alt="Planejamento Familiar">
     <h3>Planejamento Familiar</h3>
     <p>Saiba como a vasectomia e a laqueadura podem ser opções de planejamento familiar, ajudando a garantir o controle sobre o número de filhos. Oferecemos informações detalhadas sobre esses procedimentos.</p>
-    <button class="cta-btn" onclick="window.location.href='#contato'">Entre em Contato</button>
+    <button class="cta-btn" onclick="showVideo()">Assistir Vídeo</button>
   </section>
 
   <section id="contato" class="section">
@@ -198,9 +218,21 @@
     <button class="cta-btn" onclick="window.location.href='mailto:esf.sossego@saude.gov.br'">Enviar E-mail</button>
   </section>
 
+  <!-- Modal de Vídeo -->
+  <div id="videoModal">
+    <iframe src="https://www.youtube.com/embed/UXsW4LxSyuM?autoplay=1&controls=0&showinfo=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
   <footer>
     &copy; 2025 Projeto Mais Saúde • Desenvolvido por profissionais da ESF Sossego I 💙
   </footer>
+
+  <script>
+    // Função para mostrar o vídeo no modal
+    function showVideo() {
+      document.getElementById("videoModal").style.display = "flex";
+    }
+  </script>
 
 </body>
 </html>
