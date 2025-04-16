@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escolha uma opção</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f2f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      color: #00796b;
+    }
+
+    .botao {
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1.2rem;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .botao:hover {
+      background-color: #004d40;
+    }
+
+    #videoModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #player {
+      width: 90vw;
+      height: 50vh;
+    }
+
+    #fecharBtn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: red;
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Escolha uma opção:</h1>
+  <button class="botao" onclick="reproduzirVideo('tED8S2dPtTQ')">Já conheço o procedimento</button>
+  <button class="botao" onclick="reproduzirVideo('2Ms6k-L86dg')">Ainda não sei como funciona</button>
+
+  <div id="videoModal">
+    <button id="fecharBtn" onclick="fecharVideo()">X</button>
+    <div id="player"></div>
+  </div>
+
+  <!-- Script da API do YouTube -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: '', // será preenchido dinamicamente
+        events: {
+          'onStateChange': onPlayerStateChange
+        },
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          disablekb: 1,
+          rel: 0,
+          fs: 0,
+          modestbranding: 1,
+        }
+      });
+    }
+
+    function reproduzirVideo(videoId) {
+      document.getElementById("videoModal").style.display = "flex";
+      player.loadVideoById(videoId);
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        fecharVideo();
+      }
+    }
+
+    function fecharVideo() {
+      player.stopVideo();
+      document.getElementById("videoModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
