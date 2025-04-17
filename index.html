@@ -3,170 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mais Saúde</title>
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <title>Mais Saúde - Portfólio</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f4f7f9;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e0f2f1, #ffffff);
+      overflow-x: hidden;
     }
 
     header {
-      background-color: #00796b;
-      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
-      text-align: center;
-    }
-
-    nav {
-      background: #004d40;
-      padding: 0.5rem;
-      text-align: center;
-    }
-
-    nav a {
+      background-color: #004d40;
       color: white;
-      margin: 0 1rem;
-      text-decoration: none;
+    }
+
+    .logo {
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .home-btn {
+      background: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #004d40;
+      transition: all 0.3s ease;
     }
 
-    .hero {
-      height: 90vh;
-      background: url('https://source.unsplash.com/featured/?health,care') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
+    .home-btn:hover {
+      background: #00796b;
       color: white;
-      padding: 2rem;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      max-width: 600px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-
-    footer {
-      background: #eeeeee;
+    .intro {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 5rem 2rem;
     }
 
-    #videoModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      justify-content: center;
+    .intro h1 {
+      font-size: 3rem;
+      color: #004d40;
+    }
+
+    .intro p {
+      font-size: 1.3rem;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .cta-button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #004d40;
+    }
+
+    /* Página escolha */
+    .escolha-container {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      z-index: 1000;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f7f9;
     }
 
-    #player {
-      width: 80%;
-      height: 80%;
-      max-width: 1000px;
+    .opcao {
+      background-color: #e0f2f1;
+      padding: 1.5rem 3rem;
+      border-radius: 15px;
+      margin: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 1.2rem;
     }
 
-    @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
+    .opcao:hover {
+      background-color: #b2dfdb;
+    }
 
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      #player {
-        width: 100%;
-        height: 60%;
-      }
+    #avatar {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Projeto Mais Saúde</h1>
-    <p>Informações de saúde da ESF Sossego I - Schroeder, SC</p>
+    <div class="logo">Mais Saúde</div>
+    <button class="home-btn" onclick="location.href='index.html'">🏠 Início</button>
   </header>
 
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#atividades">Atividades</a>
-    <a href="#materiais">Materiais</a>
-    <a href="#contato">Contato</a>
-    <a href="#" onclick="showVideo()">Planejamento Familiar</a>
-  </nav>
-
-  <div class="hero">
+  <div class="intro">
     <h1>Bem-vindo ao Projeto Mais Saúde</h1>
-    <p>Explore conteúdos interativos sobre saúde, prevenção e bem-estar.</p>
+    <p>Seu espaço digital para aprender, se cuidar e tomar decisões com segurança. Explore conteúdos sobre saúde e bem-estar de forma simples e prática.</p>
+    <button class="cta-button" onclick="location.href='escolha.html'">Planejamento Familiar</button>
   </div>
 
-  <div id="videoModal">
-    <div id="player"></div>
-  </div>
+  <!-- Página escolha.html -->
+  <div id="escolha" class="escolha-container" style="display:none">
+    <svg id="avatar" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="#FFD54F" />
+      <circle cx="35" cy="40" r="5" fill="#000" />
+      <circle cx="65" cy="40" r="5" fill="#000" />
+      <path id="mouth" d="M35,65 Q50,75 65,65" stroke="#000" stroke-width="3" fill="none" />
+    </svg>
 
-  <footer>
-    &copy; 2025 Projeto Mais Saúde • Desenvolvido com carinho pela equipe da ESF Sossego I 💙
-  </footer>
+    <div class="opcao" onmouseenter="mudarExpressao('feliz')" onmouseleave="mudarExpressao('neutra')" onclick="location.href='video-conheco.html'">
+      Já conheço o procedimento
+    </div>
+    <div class="opcao" onmouseenter="mudarExpressao('triste')" onmouseleave="mudarExpressao('neutra')" onclick="location.href='video-naoconheco.html'">
+      Ainda não sei como funciona
+    </div>
+  </div>
 
   <script>
-    let player;
-
-    function onYouTubeIframeAPIReady() {}
-
-    function showVideo() {
-      document.getElementById("videoModal").style.display = "flex";
-      if (player) {
-        player.loadVideoById("UXsW4LxSyuM");
+    function mudarExpressao(tipo) {
+      const boca = document.getElementById('mouth');
+      if (tipo === 'feliz') {
+        boca.setAttribute('d', 'M35,60 Q50,75 65,60');
+      } else if (tipo === 'triste') {
+        boca.setAttribute('d', 'M35,70 Q50,55 65,70');
       } else {
-        player = new YT.Player('player', {
-          videoId: 'UXsW4LxSyuM',
-          playerVars: {
-            autoplay: 1,
-            controls: 0,
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-          },
-          events: {
-            'onStateChange': onPlayerStateChange
-          }
-        });
+        boca.setAttribute('d', 'M35,65 Q50,75 65,65');
       }
     }
 
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.ENDED) {
-        document.getElementById("videoModal").style.display = "none";
-        window.location.href = "escolha.html"; // Redireciona após o vídeo
-      }
+    if (window.location.pathname.includes("escolha")) {
+      document.querySelector(".intro").style.display = "none";
+      document.getElementById("escolha").style.display = "flex";
     }
   </script>
-
 </body>
 </html>
