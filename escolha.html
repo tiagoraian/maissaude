@@ -1,124 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Escolha uma opção</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mais Saúde - Portfólio</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #e0f2f1;
+      background: linear-gradient(to bottom, #e0f2f1, #ffffff);
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #004d40;
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .home-btn {
+      background: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #004d40;
+      transition: all 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background: #00796b;
+      color: white;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      color: #004d40;
+    }
+
+    .intro p {
+      font-size: 1.3rem;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .cta-button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #004d40;
+    }
+
+    /* Página escolha */
+    .escolha-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
+      background: #f4f7f9;
     }
 
-    h1 {
-      color: #00796b;
-    }
-
-    .botao {
-      padding: 1rem 2rem;
+    .opcao {
+      background-color: #e0f2f1;
+      padding: 1.5rem 3rem;
+      border-radius: 15px;
       margin: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
       font-size: 1.2rem;
-      background-color: #00796b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
     }
 
-    .botao:hover {
-      background-color: #004d40;
+    .opcao:hover {
+      background-color: #b2dfdb;
     }
 
-    #videoModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0,0,0,0.9);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #player {
-      width: 90vw;
-      height: 50vh;
-    }
-
-    #fecharBtn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      background: red;
-      color: white;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 1001;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+    #avatar {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Mais Saúde</div>
+    <button class="home-btn" onclick="location.href='index.html'">🏠 Início</button>
+  </header>
 
-  <h1>Escolha uma opção:</h1>
-  <button class="botao" onclick="reproduzirVideo('tED8S2dPtTQ')">Já conheço o procedimento</button>
-  <button class="botao" onclick="reproduzirVideo('2Ms6k-L86dg')">Ainda não sei como funciona</button>
-
-  <div id="videoModal">
-    <button id="fecharBtn" onclick="fecharVideo()">X</button>
-    <div id="player"></div>
+  <div class="intro">
+    <h1>Bem-vindo ao Projeto Mais Saúde</h1>
+    <p>Seu espaço digital para aprender, se cuidar e tomar decisões com segurança. Explore conteúdos sobre saúde e bem-estar de forma simples e prática.</p>
+    <button class="cta-button" onclick="location.href='escolha.html'">Planejamento Familiar</button>
   </div>
 
-  <!-- Script da API do YouTube -->
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <!-- Página escolha.html -->
+  <div id="escolha" class="escolha-container" style="display:none">
+    <svg id="avatar" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="#FFD54F" />
+      <circle cx="35" cy="40" r="5" fill="#000" />
+      <circle cx="65" cy="40" r="5" fill="#000" />
+      <path id="mouth" d="M35,65 Q50,75 65,65" stroke="#000" stroke-width="3" fill="none" />
+    </svg>
+
+    <div class="opcao" onmouseenter="mudarExpressao('feliz')" onmouseleave="mudarExpressao('neutra')" onclick="location.href='video-conheco.html'">
+      Já conheço o procedimento
+    </div>
+    <div class="opcao" onmouseenter="mudarExpressao('triste')" onmouseleave="mudarExpressao('neutra')" onclick="location.href='video-naoconheco.html'">
+      Ainda não sei como funciona
+    </div>
+  </div>
+
   <script>
-    let player;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: '', // será preenchido dinamicamente
-        events: {
-          'onStateChange': onPlayerStateChange
-        },
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          disablekb: 1,
-          rel: 0,
-          fs: 0,
-          modestbranding: 1,
-        }
-      });
-    }
-
-    function reproduzirVideo(videoId) {
-      document.getElementById("videoModal").style.display = "flex";
-      player.loadVideoById(videoId);
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        fecharVideo();
+    function mudarExpressao(tipo) {
+      const boca = document.getElementById('mouth');
+      if (tipo === 'feliz') {
+        boca.setAttribute('d', 'M35,60 Q50,75 65,60');
+      } else if (tipo === 'triste') {
+        boca.setAttribute('d', 'M35,70 Q50,55 65,70');
+      } else {
+        boca.setAttribute('d', 'M35,65 Q50,75 65,65');
       }
     }
 
-    function fecharVideo() {
-      player.stopVideo();
-      document.getElementById("videoModal").style.display = "none";
+    if (window.location.pathname.includes("escolha")) {
+      document.querySelector(".intro").style.display = "none";
+      document.getElementById("escolha").style.display = "flex";
     }
   </script>
 </body>
